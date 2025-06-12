@@ -23,7 +23,7 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    padding-top: 0.5rem; /* Añadido para el espaciado superior del contenido */
+    padding-top: 1.2rem; /* Añadido para el espaciado superior del contenido */
 }
 
 /* Estilos para los elementos del grafo de red */
