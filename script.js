@@ -37,12 +37,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const tooltip = d3.select("#tooltip");
     const institutionColorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(filters['Institución'].indicators);
     let link, node;
-    const linkGroup = svg.append("g").attr("class", "links");
-    const nodeGroup = svg.append("g").attr("class", "nodes");
+    
+    // Crear un grupo para aplicar las transformaciones de zoom
+    const zoomGroup = svg.append("g").attr("id", "zoom-group");
+
+    const linkGroup = zoomGroup.append("g").attr("class", "links");
+    const nodeGroup = zoomGroup.append("g").attr("class", "nodes");
     const simulation = d3.forceSimulation()
         .force("charge", d3.forceManyBody().strength(-400))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
+
+    // Configurar el comportamiento de zoom
+    const zoom = d3.zoom()
+        .scaleExtent([0.2, 5]) // Límites de escala (20% a 500%)
+        .on("zoom", (event) => {
+            zoomGroup.attr("transform", event.transform); // Aplicar la transformación de zoom al grupo
+        });
+
+    svg.call(zoom); // Habilitar zoom en el SVG
 
     // --- INICIALIZACIÓN DE LA UI ---
     const filtersContainer = document.getElementById('filters-container');
@@ -56,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
         button.className = 'accordion-button w-full p-4 text-left font-bold text-lg text-gray-700 flex justify-between items-center';
         button.innerHTML = `<span>${field}</span><span>&#9662;</span>`;
         const content = document.createElement('div');
-        content.className = 'accordion-content px-4 pb-4';
+        // La clase 'accordion-content' ya tiene padding-top definido en style.css
+        content.className = 'accordion-content px-4 pb-4'; 
         content.innerHTML = filters[field].indicators.map(indicator => `
             <label class="flex items-center space-x-3 mt-2 text-gray-600">
                 <input type="checkbox" data-field="${field}" value="${indicator}" class="form-checkbox h-5 w-5 rounded text-indigo-600 focus:ring-indigo-500">
