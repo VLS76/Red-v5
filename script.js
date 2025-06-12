@@ -355,7 +355,7 @@ function updateNetwork() {
         }
       },
       chosen: {
-        label: true
+        label: false // Cambio de true a false
       },
       hoverWidth: 0.5
     },
