@@ -11,22 +11,22 @@
 <body class="bg-gray-50 font-sans text-gray-800">
 
     <div class="flex flex-col md:flex-row h-screen">
-        <!-- Sidebar for Filters -->
+        <!-- Sidebar para Filtros -->
         <aside class="w-full md:w-80 lg:w-96 bg-white p-6 overflow-y-auto shadow-lg flex-shrink-0">
             <h1 class="text-2xl font-bold text-gray-900 mb-6">Filtros de Búsqueda</h1>
             <div id="filters-container" class="space-y-4">
-                <!-- Filter accordions will be injected here by JavaScript -->
+                <!-- Los acordeones de filtro serán inyectados aquí por JavaScript -->
             </div>
         </aside>
 
-        <!-- Main Content Area -->
+        <!-- Área de Contenido Principal -->
         <main class="flex-1 p-6 flex flex-col relative">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Visualización de la Red</h2>
             <div id="visualization-container" class="relative flex-1 bg-white rounded-xl shadow-md border border-gray-200">
                 <svg id="network-graph"></svg>
             </div>
 
-            <!-- Person Details Panel -->
+            <!-- Panel de Detalles de la Persona -->
             <div id="details-panel" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-gray-300 w-11/12 max-w-md">
                 <button id="close-details" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">&times;</button>
                 <h3 id="details-name" class="text-2xl font-bold mb-4 text-gray-900"></h3>
@@ -35,12 +35,12 @@
         </main>
     </div>
 
-    <!-- Tooltip for links -->
+    <!-- Tooltip para las conexiones -->
     <div id="tooltip" class="absolute bg-gray-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none opacity-0 transition-opacity duration-300 shadow-lg"></div>
 
-    <!-- D3.js Library -->
+    <!-- Librería D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <!-- Main Script -->
+    <!-- Script Principal -->
     <script src="script.js"></script>
 
 </body>
