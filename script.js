@@ -260,14 +260,25 @@ function buildNetworkData(filteredPeople) {
         color = '#90caf9';
       }
     }
+
+    // *** CAMBIO CLAVE AQUÍ: Dividir el nombre y el apellido ***
+    const nameParts = person.name.split(' ');
+    let nodeLabel = person.name; // Por defecto el nombre completo
+    if (nameParts.length > 1) {
+      // Tomamos la primera parte como nombre y el resto como apellido(s)
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' '); // Une el resto como apellido
+      nodeLabel = `${firstName}\n${lastName}`; // Añade un salto de línea
+    }
+    // *** FIN CAMBIO CLAVE ***
+
     return {
       id: person.id,
-      label: person.name,
-      title: person.name,
+      label: nodeLabel, // Usamos la etiqueta con salto de línea
+      title: person.name, // El title (tooltip) sigue mostrando el nombre completo
       size,
       color,
-      // *** ESTA LÍNEA DEBE SER ELIMINADA O COMENTADA ***
-      // font: { size: 16 },
+      // font: { size: 16 }, // Asegúrate de que esta línea esté eliminada o comentada
       institution: person.Institution[0],
       isPI
     };
@@ -317,39 +328,36 @@ function updateNetwork() {
       shape: 'dot',
       borderWidth: 2,
       shadow: true,
-      // *** CAMBIOS AQUÍ para el nombre dentro del nodo ***
       font: {
         size: 16,
         color: '#000000', // Color del texto a negro
         face: 'arial',
         align: 'center', // Alinea el texto al centro del nodo
-        vadjust: 0 // Ajusta la posición vertical del texto (0 para centrar)
+        vadjust: 0 // Ajusta la posición vertical del texto (0 para centrar la línea superior)
       }
     },
     edges: {
       smooth: {
         type: 'dynamic'
       },
-      // *** CAMBIOS AQUÍ para los indicadores en el borde (hover) ***
       font: {
         size: 12,
         align: 'middle',
-        color: '#333', // Color del texto del label cuando aparece
-        background: '#fff', // Fondo del label cuando aparece
-        strokeWidth: 0, // Elimina el contorno del texto
+        color: '#333',
+        background: '#fff',
+        strokeWidth: 0,
       },
       scaling: {
         label: {
-          enabled: true, // Habilita el escalado para la etiqueta (opcional, pero bueno para visibilidad)
+          enabled: true,
           min: 8,
           max: 20
         }
       },
       chosen: {
-        // *** ESTA ES LA CLAVE para mostrar el label SÓLO al pasar el ratón ***
         label: true
       },
-      hoverWidth: 0.5 // Incrementa el ancho del borde al pasar el ratón
+      hoverWidth: 0.5
     },
     physics: {
       enabled: true,
@@ -381,9 +389,6 @@ function updateNetwork() {
       hidePersonInfo();
     }
   });
-
-  // El comportamiento de hover en los edges para mostrar la etiqueta es gestionado por vis.js
-  // gracias a `edges.chosen.label: true` y `edges.label` en la definición de cada edge.
 }
 
 // --- Person Info Box ---
