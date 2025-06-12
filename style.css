@@ -1,38 +1,47 @@
-/* Custom styles to complement Tailwind CSS */
+/* Estilos personalizados para complementar Tailwind CSS */
 body {
     font-family: 'Inter', sans-serif;
 }
 
-/* Style for the SVG container to be fully responsive */
+/* Estilo para que el contenedor SVG sea completamente responsive */
 #visualization-container, #network-graph {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
-/* Accordion button styles */
+/* Estilos del botón de acordeón */
 .accordion-button {
     transition: background-color 0.2s ease-in-out;
 }
 .accordion-button.active {
-    background-color: #eef2ff; /* A light indigo */
+    background-color: #eef2ff; /* Un índigo claro */
 }
 
-/* Accordion content styles */
+/* Estilos del contenido del acordeón */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
 }
 
-/* Styles for the network graph elements */
-.node {
+/* Estilos para los elementos del grafo de red */
+.node-group {
     cursor: pointer;
+}
+.node {
     transition: transform 0.2s ease, filter 0.2s ease;
 }
-.node:hover {
+.node-group:hover .node {
     transform: scale(1.2);
     filter: brightness(1.1);
+}
+.node-label {
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+    fill: #333;
+    pointer-events: none; /* Hace que el texto no sea interactivo */
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff; /* Contorno blanco para legibilidad */
 }
 
 .link {
@@ -44,26 +53,25 @@ body {
     stroke-width: 3.5px;
 }
 
-/* Specific node styles for IP/Non-IP hierarchy */
+/* Estilos de nodo específicos para la jerarquía IP/No-IP */
 .node--ip {
-    stroke: #4f46e5; /* Indigo-600 */
+    stroke: #3730a3; /* Indigo-800 */
     stroke-width: 3px;
 }
 .node--satellite {
-    stroke: #a5b4fc; /* Indigo-300 */
     stroke-width: 1.5px;
 }
 
-/* Details panel close button styling */
+/* Estilo del botón de cierre del panel de detalles */
 #close-details {
     font-size: 2rem;
     line-height: 1;
     font-weight: bold;
 }
 
-/* Custom border colors for each filter category */
-.border-especie { border-left: 5px solid #ef4444; /* red-500 */ }
-.border-tecnologia { border-left: 5px solid #3b82f6; /* blue-500 */ }
-.border-lineas { border-left: 5px solid #10b981; /* emerald-500 */ }
-.border-rol { border-left: 5px solid #f97316; /* orange-500 */ }
-.border-institucion { border-left: 5px solid #8b5cf6; /* violet-500 */ }
+/* Colores de borde personalizados para cada categoría de filtro */
+.border-especie { border-left: 5px solid #ef4444; }
+.border-tecnologia { border-left: 5px solid #3b82f6; }
+.border-lineas { border-left: 5px solid #10b981; }
+.border-rol { border-left: 5px solid #f97316; }
+.border-institucion { border-left: 5px solid #8b5cf6; }
