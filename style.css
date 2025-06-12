@@ -23,7 +23,7 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    padding-top: 3rem; /* Añadido para el espaciado superior del contenido */
+    padding-top: 1rem; /* Añadido para el espaciado superior del contenido */
 }
 
 /* Estilos para los elementos del grafo de red */
@@ -71,8 +71,8 @@ body {
 }
 
 /* Colores de borde personalizados para cada categoría de filtro */
-.border-especie { border-left: 5px solid #ef4444; }
-.border-tecnologia { border-left: 5px solid #3b82f6; }
-.border-lineas { border-left: 5px solid #10b981; }
-.border-rol { border-left: 5px solid #f97316; }
-.border-institucion { border-left: 5px solid #8b5cf6; }
+.border-especie { border-left: 3px solid #ef4444; }
+.border-tecnologia { border-left: 3px solid #3b82f6; }
+.border-lineas { border-left: 3px solid #10b981; }
+.border-rol { border-left: 3px solid #f97316; }
+.border-institucion { border-left: 3px solid #8b5cf6; }
