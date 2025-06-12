@@ -1,422 +1,457 @@
-// --- Field Definitions ---
-const fields = [
-  {
-    name: 'Species',
-    color: '#e57373',
-    indicators: [
-      'Sheep', 'Goat', 'Cattle', 'Swine', 'Poultry', 'Rabbit'
-    ]
-  },
-  {
-    name: 'Technology',
-    color: '#64b5f6',
-    indicators: [
-      'Identification and monitoring', 'Detection and measurement', 'Biosensors',
-      'Positioning and navigation', 'Automation and robots', 'Image analysis', 'Data science'
-    ]
-  },
-  {
-    name: 'Lines',
-    color: '#81c784',
-    indicators: [
-      'Animal health', 'Resource optimization', 'Animal behavior',
-      'Emissions monitoring', 'Reproduction and genetic improvement'
-    ]
-  },
-  {
-    name: 'Role',
-    color: '#ffd54f',
-    indicators: [
-      'PI (Principal Investigator)', 'Postdoc', 'Predoc', 'Technician', 'Scientific advisor'
-    ]
-  },
-  {
-    name: 'Institution',
-    color: '#ba68c8',
-    indicators: [
-      'CICYTEX', 'CSIC/INIA', 'IRTA', 'IUCA', 'NEIKER', 'UAB', 'UCO', 'UdL/Agrotecnio',
-      'UM', 'USAL', 'USC/Campus Terra', 'UPV'
-    ]
-  }
-];
-
-// --- Example People Data (15 people with mixed indicators) ---
+// Sample data with 15 people
 const people = [
-  {
-    id: 1, name: "Alice García",
-    Species: ["Sheep", "Goat"],
-    Technology: ["Biosensors", "Data science"],
-    Lines: ["Animal health"],
-    Role: ["PI (Principal Investigator)"],
-    Institution: ["CSIC/INIA"]
-  },
-  {
-    id: 2, name: "Bernat López",
-    Species: ["Cattle"],
-    Technology: ["Image analysis", "Automation and robots"],
-    Lines: ["Resource optimization"],
-    Role: ["Postdoc"],
-    Institution: ["CSIC/INIA"]
-  },
-  {
-    id: 3, name: "Clara Ruiz",
-    Species: ["Swine", "Poultry"],
-    Technology: ["Detection and measurement"],
-    Lines: ["Emissions monitoring"],
-    Role: ["Technician"],
-    Institution: ["IRTA"]
-  },
-  {
-    id: 4, name: "David Martínez",
-    Species: ["Rabbit"],
-    Technology: ["Identification and monitoring"],
-    Lines: ["Animal behavior"],
-    Role: ["PI (Principal Investigator)"],
-    Institution: ["IRTA"]
-  },
-  {
-    id: 5, name: "Elena Torres",
-    Species: ["Cattle", "Swine"],
-    Technology: ["Data science", "Image analysis"],
-    Lines: ["Reproduction and genetic improvement"],
-    Role: ["Predoc"],
-    Institution: ["IUCA"]
-  },
-  {
-    id: 6, name: "Francisco Vidal",
-    Species: ["Sheep"],
-    Technology: ["Biosensors", "Detection and measurement"],
-    Lines: ["Animal health", "Resource optimization"],
-    Role: ["PI (Principal Investigator)"],
-    Institution: ["NEIKER"]
-  },
-  {
-    id: 7, name: "Gemma Serra",
-    Species: ["Goat"],
-    Technology: ["Automation and robots"],
-    Lines: ["Animal behavior"],
-    Role: ["Postdoc"],
-    Institution: ["NEIKER"]
-  },
-  {
-    id: 8, name: "Hugo Peña",
-    Species: ["Poultry", "Rabbit"],
-    Technology: ["Positioning and navigation"],
-    Lines: ["Resource optimization"],
-    Role: ["Technician"],
-    Institution: ["UAB"]
-  },
-  {
-    id: 9, name: "Irene Navarro",
-    Species: ["Cattle"],
-    Technology: ["Data science", "Biosensors"],
-    Lines: ["Animal health"],
-    Role: ["PI (Principal Investigator)"],
-    Institution: ["UCO"]
-  },
-  {
-    id: 10, name: "Jordi Soler",
-    Species: ["Sheep"],
-    Technology: ["Image analysis"],
-    Lines: ["Emissions monitoring"],
-    Role: ["Predoc"],
-    Institution: ["UCO"]
-  },
-  {
-    id: 11, name: "Karla Jiménez",
-    Species: ["Goat", "Cattle"],
-    Technology: ["Detection and measurement", "Automation and robots"],
-    Lines: ["Reproduction and genetic improvement"],
-    Role: ["PI (Principal Investigator)"],
-    Institution: ["UdL/Agrotecnio"]
-  },
-  {
-    id: 12, name: "Luis Gómez",
-    Species: ["Swine"],
-    Technology: ["Biosensors"],
-    Lines: ["Animal health", "Resource optimization"],
-    Role: ["Postdoc"],
-    Institution: ["UM"]
-  },
-  {
-    id: 13, name: "Marina Ortega",
-    Species: ["Poultry"],
-    Technology: ["Data science", "Image analysis"],
-    Lines: ["Animal behavior"],
-    Role: ["Scientific advisor"],
-    Institution: ["USAL"]
-  },
-  {
-    id: 14, name: "Nuria Ríos",
-    Species: ["Rabbit", "Sheep"],
-    Technology: ["Identification and monitoring", "Biosensors"],
-    Lines: ["Emissions monitoring"],
-    Role: ["PI (Principal Investigator)"],
-    Institution: ["USC/Campus Terra"]
-  },
-  {
-    id: 15, name: "Oscar Díaz",
-    Species: ["Cattle"],
-    Technology: ["Positioning and navigation", "Automation and robots"],
-    Lines: ["Reproduction and genetic improvement"],
-    Role: ["Predoc"],
-    Institution: ["UPV"]
-  }
+    {
+        id: 1,
+        name: "Ana García",
+        especie: ["Ovina", "Caprina"],
+        tecnologia: ["Identificación y monitorización", "Biosensores"],
+        lineas: ["Salud animal", "Comportamiento animal"],
+        rol: ["IP"],
+        institucion: ["CICYTEX"]
+    },
+    {
+        id: 2,
+        name: "Carlos Martín",
+        especie: ["Vacuna"],
+        tecnologia: ["Detección y medición", "Ciencia de datos"],
+        lineas: ["Optimización de recursos"],
+        rol: ["Postdoc"],
+        institucion: ["CICYTEX"]
+    },
+    {
+        id: 3,
+        name: "María López",
+        especie: ["Porcina", "Avícola"],
+        tecnologia: ["Automatización y robots", "Análisis de imágenes"],
+        lineas: ["Salud animal", "Monitoreo de emisiones"],
+        rol: ["IP"],
+        institucion: ["CSIC/INIA"]
+    },
+    {
+        id: 4,
+        name: "José Rodríguez",
+        especie: ["Ovina"],
+        tecnologia: ["Posicionamiento y navegación"],
+        lineas: ["Comportamiento animal"],
+        rol: ["Predoc"],
+        institucion: ["CSIC/INIA"]
+    },
+    {
+        id: 5,
+        name: "Laura Fernández",
+        especie: ["Cunícula"],
+        tecnologia: ["Biosensores", "Ciencia de datos"],
+        lineas: ["Reproducción y mejora genética"],
+        rol: ["Técnico"],
+        institucion: ["IRTA"]
+    },
+    {
+        id: 6,
+        name: "Pedro Sánchez",
+        especie: ["Vacuna", "Ovina"],
+        tecnologia: ["Identificación y monitorización"],
+        lineas: ["Salud animal", "Optimización de recursos"],
+        rol: ["IP"],
+        institucion: ["IUCA"]
+    },
+    {
+        id: 7,
+        name: "Carmen Díaz",
+        especie: ["Avícola"],
+        tecnologia: ["Detección y medición", "Automatización y robots"],
+        lineas: ["Monitoreo de emisiones"],
+        rol: ["Postdoc"],
+        institucion: ["IUCA"]
+    },
+    {
+        id: 8,
+        name: "Miguel Torres",
+        especie: ["Porcina"],
+        tecnologia: ["Análisis de imágenes", "Ciencia de datos"],
+        lineas: ["Comportamiento animal", "Reproducción y mejora genética"],
+        rol: ["Asesor científico"],
+        institucion: ["NEIKER"]
+    },
+    {
+        id: 9,
+        name: "Isabel Ruiz",
+        especie: ["Caprina", "Ovina"],
+        tecnologia: ["Biosensores"],
+        lineas: ["Salud animal"],
+        rol: ["IP"],
+        institucion: ["UAB"]
+    },
+    {
+        id: 10,
+        name: "Antonio Jiménez",
+        especie: ["Vacuna"],
+        tecnologia: ["Posicionamiento y navegación", "Automatización y robots"],
+        lineas: ["Optimización de recursos", "Monitoreo de emisiones"],
+        rol: ["Predoc"],
+        institucion: ["UAB"]
+    },
+    {
+        id: 11,
+        name: "Rocío Moreno",
+        especie: ["Cunícula", "Avícola"],
+        tecnologia: ["Identificación y monitorización", "Análisis de imágenes"],
+        lineas: ["Reproducción y mejora genética"],
+        rol: ["Postdoc"],
+        institucion: ["UCO"]
+    },
+    {
+        id: 12,
+        name: "Francisco Herrera",
+        especie: ["Porcina", "Vacuna"],
+        tecnologia: ["Detección y medición", "Ciencia de datos"],
+        lineas: ["Salud animal", "Comportamiento animal"],
+        rol: ["IP"],
+        institucion: ["UdL/Agrotecnio"]
+    },
+    {
+        id: 13,
+        name: "Elena Vargas",
+        especie: ["Ovina"],
+        tecnologia: ["Biosensores", "Posicionamiento y navegación"],
+        lineas: ["Monitoreo de emisiones", "Optimización de recursos"],
+        rol: ["Técnico"],
+        institucion: ["UdL/Agrotecnio"]
+    },
+    {
+        id: 14,
+        name: "David Castro",
+        especie: ["Caprina", "Cunícula"],
+        tecnologia: ["Automatización y robots"],
+        lineas: ["Reproducción y mejora genética", "Comportamiento animal"],
+        rol: ["Predoc"],
+        institucion: ["UM"]
+    },
+    {
+        id: 15,
+        name: "Silvia Ramos",
+        especie: ["Avícola", "Porcina"],
+        tecnologia: ["Análisis de imágenes", "Identificación y monitorización"],
+        lineas: ["Salud animal", "Monitoreo de emisiones"],
+        rol: ["IP"],
+        institucion: ["USAL"]
+    }
 ];
 
-// --- Utility: Build Field Tabs ---
-function createFieldTabs() {
-  const aside = document.getElementById('fields');
-  fields.forEach(field => {
-    const tab = document.createElement('div');
-    tab.className = `field-tab ${field.name}`;
-    tab.style.borderColor = field.color;
+// Color mapping for fields
+const fieldColors = {
+    especie: '#e74c3c',
+    tecnologia: '#3498db',
+    lineas: '#2ecc71',
+    rol: '#f39c12',
+    institucion: '#9b59b6'
+};
 
-    const header = document.createElement('div');
-    header.className = 'field-header';
-    header.innerHTML = `<span>${field.name}</span><span>+</span>`;
-    header.addEventListener('click', () => {
-      tab.classList.toggle('active');
-      header.querySelector('span:last-child').textContent = tab.classList.contains('active') ? '–' : '+';
-    });
+// Current filters
+let activeFilters = {
+    especie: [],
+    tecnologia: [],
+    lineas: [],
+    rol: [],
+    institucion: []
+};
 
-    const content = document.createElement('div');
-    content.className = 'field-content';
+// D3 network variables
+let svg, width, height, simulation, nodes, links;
 
-    field.indicators.forEach(indicator => {
-      const id = `filter-${field.name}-${indicator}`.replace(/\s+/g, '-');
-      const label = document.createElement('label');
-      label.innerHTML = `<input type="checkbox" data-field="${field.name}" value="${indicator}" id="${id}"> ${indicator}`;
-      content.appendChild(label);
-    });
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    initializeNetwork();
+    updateVisualization();
+});
 
-    tab.appendChild(header);
-    tab.appendChild(content);
-    aside.appendChild(tab);
-  });
+function toggleFilter(fieldName) {
+    const content = document.getElementById(fieldName + '-content');
+    const arrow = content.previousElementSibling.querySelector('.arrow');
+    
+    if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        arrow.classList.remove('rotated');
+    } else {
+        content.classList.add('expanded');
+        arrow.classList.add('rotated');
+    }
 }
 
-// --- Filter State ---
-const selectedIndicators = {};
-fields.forEach(f => selectedIndicators[f.name] = new Set());
-
-// --- Event Handlers for Filters ---
-function setupFilterEvents() {
-  document.querySelectorAll('input[type="checkbox"][data-field]').forEach(cb => {
-    cb.addEventListener('change', () => {
-      const field = cb.getAttribute('data-field');
-      const value = cb.value;
-      if (cb.checked) {
-        selectedIndicators[field].add(value);
-      } else {
-        selectedIndicators[field].delete(value);
-      }
-      updateNetwork();
+function updateFilters() {
+    // Reset filters
+    for (let field in activeFilters) {
+        activeFilters[field] = [];
+    }
+    
+    // Get all checked checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    checkboxes.forEach(checkbox => {
+        const fieldName = checkbox.closest('.filter-section').querySelector('.filter-header').classList[1];
+        activeFilters[fieldName].push(checkbox.value);
     });
-  });
+    
+    updateVisualization();
 }
 
-// --- Network Visualization ---
-let network = null;
+function initializeNetwork() {
+    svg = d3.select('#network');
+    const container = document.querySelector('.network-container');
+    width = container.clientWidth;
+    height = container.clientHeight;
+    
+    svg.attr('width', width).attr('height', height);
+    
+    simulation = d3.forceSimulation()
+        .force('link', d3.forceLink().id(d => d.id).distance(80))
+        .force('charge', d3.forceManyBody().strength(-200))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('collision', d3.forceCollide().radius(20));
+}
+
+function updateVisualization() {
+    const filteredPeople = getFilteredPeople();
+    const connections = getConnections(filteredPeople);
+    
+    // Clear previous visualization
+    svg.selectAll('*').remove();
+    
+    if (filteredPeople.length === 0) {
+        return;
+    }
+    
+    // Create nodes and links data
+    nodes = filteredPeople.map(person => ({
+        id: person.id,
+        name: person.name,
+        person: person,
+        isIP: person.rol.includes('IP')
+    }));
+    
+    links = connections;
+    
+    // Apply institutional clustering for non-IP people
+    applyInstitutionalClustering();
+    
+    // Create links
+    const link = svg.append('g')
+        .selectAll('line')
+        .data(links)
+        .enter().append('line')
+        .attr('class', d => `link ${d.field}`)
+        .on('mouseover', showTooltip)
+        .on('mouseout', hideTooltip);
+    
+    // Create nodes
+    const node = svg.append('g')
+        .selectAll('circle')
+        .data(nodes)
+        .enter().append('circle')
+        .attr('class', d => `node ${d.isIP ? 'ip' : 'non-ip'}`)
+        .attr('r', d => d.isIP ? 12 : 6)
+        .attr('fill', d => getNodeColor(d.person))
+        .call(d3.drag()
+            .on('start', dragstarted)
+            .on('drag', dragged)
+            .on('end', dragended))
+        .on('click', showPersonDetails);
+    
+    // Add labels
+    const labels = svg.append('g')
+        .selectAll('text')
+        .data(nodes)
+        .enter().append('text')
+        .attr('class', 'person-name')
+        .text(d => d.name)
+        .attr('dy', d => d.isIP ? 20 : 15);
+    
+    // Update simulation
+    simulation.nodes(nodes);
+    simulation.force('link').links(links);
+    simulation.alpha(1).restart();
+    
+    simulation.on('tick', () => {
+        link
+            .attr('x1', d => d.source.x)
+            .attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x)
+            .attr('y2', d => d.target.y);
+        
+        node
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y);
+        
+        labels
+            .attr('x', d => d.x)
+            .attr('y', d => d.y);
+    });
+}
 
 function getFilteredPeople() {
-  // If no filters, show all
-  const anySelected = Object.values(selectedIndicators).some(set => set.size > 0);
-  if (!anySelected) return people;
-
-  // Show people who match ANY selected indicator in ANY field
-  return people.filter(person => {
-    return fields.some(field => {
-      if (selectedIndicators[field.name].size === 0) return false;
-      const personIndicators = person[field.name] || [];
-      return personIndicators.some(ind => selectedIndicators[field.name].has(ind));
+    if (Object.values(activeFilters).every(arr => arr.length === 0)) {
+        return [];
+    }
+    
+    return people.filter(person => {
+        for (let field in activeFilters) {
+            if (activeFilters[field].length > 0) {
+                const hasMatch = activeFilters[field].some(filter => 
+                    person[field].includes(filter)
+                );
+                if (hasMatch) return true;
+            }
+        }
+        return false;
     });
-  });
 }
 
-// --- Build Network Data ---
-function buildNetworkData(filteredPeople) {
-  // Map from id to person
-  const idToPerson = {};
-  filteredPeople.forEach(p => idToPerson[p.id] = p);
-
-  // Nodes
-  const nodes = filteredPeople.map(person => {
-    // Node size logic for PI and satellite layout
-    let size = 30;
-    let color = '#1976d2';
-    let isPI = (person.Role || []).includes('PI (Principal Investigator)');
-    if (isPI) {
-      size = 36;
-      color = '#1976d2';
-    } else {
-      // If in same institution as a PI, make smaller and satellite
-      const sameInstitutionPIs = filteredPeople.filter(p2 =>
-        p2.Institution[0] === person.Institution[0] &&
-        (p2.Role || []).includes('PI (Principal Investigator)')
-      );
-      if (sameInstitutionPIs.length > 0) {
-        size = 22;
-        color = '#90caf9';
-      }
+function getConnections(filteredPeople) {
+    const connections = [];
+    
+    for (let i = 0; i < filteredPeople.length; i++) {
+        for (let j = i + 1; j < filteredPeople.length; j++) {
+            const person1 = filteredPeople[i];
+            const person2 = filteredPeople[j];
+            const commonFields = getCommonFields(person1, person2);
+            
+            commonFields.forEach(fieldData => {
+                connections.push({
+                    source: person1.id,
+                    target: person2.id,
+                    field: fieldData.field,
+                    commonValues: fieldData.values
+                });
+            });
+        }
     }
+    
+    return connections;
+}
 
-    // *** CAMBIO CLAVE AQUÍ: Dividir el nombre y el apellido ***
-    const nameParts = person.name.split(' ');
-    let nodeLabel = person.name; // Por defecto el nombre completo
-    if (nameParts.length > 1) {
-      // Tomamos la primera parte como nombre y el resto como apellido(s)
-      const firstName = nameParts[0];
-      const lastName = nameParts.slice(1).join(' '); // Une el resto como apellido
-      nodeLabel = `${firstName}\n${lastName}`; // Añade un salto de línea
+function getCommonFields(person1, person2) {
+    const commonFields = [];
+    
+    for (let field in activeFilters) {
+        if (activeFilters[field].length > 0) {
+            const common = person1[field].filter(value => 
+                person2[field].includes(value) && activeFilters[field].includes(value)
+            );
+            
+            if (common.length > 0) {
+                commonFields.push({
+                    field: field,
+                    values: common
+                });
+            }
+        }
     }
-    // *** FIN CAMBIO CLAVE ***
+    
+    return commonFields;
+}
 
-    return {
-      id: person.id,
-      label: nodeLabel, // Usamos la etiqueta con salto de línea
-      title: person.name, // El title (tooltip) sigue mostrando el nombre completo
-      size,
-      color,
-      // font: { size: 16 }, // Asegúrate de que esta línea esté eliminada o comentada
-      institution: person.Institution[0],
-      isPI
+function applyInstitutionalClustering() {
+    // Group people by institution
+    const institutionGroups = {};
+    nodes.forEach(node => {
+        const institution = node.person.institucion[0];
+        if (!institutionGroups[institution]) {
+            institutionGroups[institution] = { ips: [], nonIps: [] };
+        }
+        
+        if (node.isIP) {
+            institutionGroups[institution].ips.push(node);
+        } else {
+            institutionGroups[institution].nonIps.push(node);
+        }
+    });
+    
+    // Apply satellite positioning for non-IPs around IPs
+    Object.values(institutionGroups).forEach(group => {
+        if (group.ips.length > 0 && group.nonIps.length > 0) {
+            group.nonIps.forEach((nonIP, index) => {
+                const angle = (2 * Math.PI * index) / group.nonIps.length;
+                const radius = 50;
+                const ip = group.ips[0]; // Use first IP as center
+                
+                // Set initial position relative to IP
+                nonIP.fx = ip.x + radius * Math.cos(angle);
+                nonIP.fy = ip.y + radius * Math.sin(angle);
+            });
+        }
+    });
+}
+
+function getNodeColor(person) {
+    // Color based on primary institution
+    const institutionColors = {
+        'CICYTEX': '#FF6B6B',
+        'CSIC/INIA': '#4ECDC4',
+        'IRTA': '#45B7D1',
+        'IUCA': '#96CEB4',
+        'NEIKER': '#FECA57',
+        'UAB': '#FF9FF3',
+        'UCO': '#54A0FF',
+        'UdL/Agrotecnio': '#5F27CD',
+        'UM': '#00D2D3',
+        'USAL': '#FF9F43',
+        'USC/Campus Terra': '#10AC84',
+        'UPV': '#EE5A24'
     };
-  });
-
-  // Edges: connect people who share at least one indicator in any field
-  const edges = [];
-  for (let i = 0; i < filteredPeople.length; i++) {
-    for (let j = i + 1; j < filteredPeople.length; j++) {
-      const p1 = filteredPeople[i];
-      const p2 = filteredPeople[j];
-      let shared = [];
-      fields.forEach(field => {
-        const a = new Set(p1[field.name] || []);
-        const b = new Set(p2[field.name] || []);
-        const overlap = [...a].filter(x => b.has(x));
-        if (overlap.length > 0) {
-          shared.push(`${field.name}: ${overlap.join(', ')}`);
-        }
-      });
-      if (shared.length > 0) {
-        edges.push({
-          from: p1.id,
-          to: p2.id,
-          label: shared.join('\n'), // La etiqueta se mantiene aquí para el hover
-          color: { color: '#aaa', highlight: '#1976d2' },
-          width: 2
-        });
-      }
-    }
-  }
-
-  return { nodes, edges };
+    
+    return institutionColors[person.institucion[0]] || '#95A5A6';
 }
 
-// --- Update Network ---
-function updateNetwork() {
-  const filtered = getFilteredPeople();
-  const data = buildNetworkData(filtered);
-
-  // Destroy previous network if exists
-  if (network) network.destroy();
-
-  const container = document.getElementById('network');
-  const options = {
-    nodes: {
-      shape: 'dot',
-      borderWidth: 2,
-      shadow: true,
-      font: {
-        size: 16,
-        color: '#000000', // Color del texto a negro
-        face: 'arial',
-        align: 'center', // Alinea el texto al centro del nodo
-        vadjust: 0 // Ajusta la posición vertical del texto (0 para centrar la línea superior)
-      }
-    },
-    edges: {
-      smooth: {
-        type: 'dynamic'
-      },
-      font: {
-        size: 12,
-        align: 'middle',
-        color: '#333',
-        background: '#fff',
-        strokeWidth: 0,
-      },
-      scaling: {
-        label: {
-          enabled: true,
-          min: 8,
-          max: 20
-        }
-      },
-      chosen: {
-        label: false // Cambio de true a false
-      },
-      hoverWidth: 0.5
-    },
-    physics: {
-      enabled: true,
-      barnesHut: {
-        gravitationalConstant: -4000,
-        centralGravity: 0.3,
-        springLength: 120,
-        springConstant: 0.05,
-        damping: 0.09
-      }
-    },
-    layout: {
-      improvedLayout: true
-    },
-    interaction: {
-      hover: true,
-      tooltipDelay: 100
-    }
-  };
-
-  network = new vis.Network(container, data, options);
-
-  // Node click: show person info
-  network.on("click", function(params) {
-    if (params.nodes.length > 0) {
-      const personId = params.nodes[0];
-      showPersonInfo(personId);
-    } else {
-      hidePersonInfo();
-    }
-  });
+function showTooltip(event, d) {
+    const tooltip = document.getElementById('tooltip');
+    tooltip.innerHTML = `<strong>Conexión:</strong><br>${d.commonValues.join(', ')}`;
+    tooltip.style.left = (event.pageX + 10) + 'px';
+    tooltip.style.top = (event.pageY - 10) + 'px';
+    tooltip.classList.add('visible');
 }
 
-// --- Person Info Box ---
-function showPersonInfo(personId) {
-  const person = people.find(p => p.id === personId);
-  if (!person) return;
-  const box = document.getElementById('person-info');
-  box.innerHTML = `
-    <h3>${person.name}</h3>
-    ${fields.map(field => {
-      const vals = person[field.name] || [];
-      return `<div><b>${field.name}:</b> ${vals.length ? vals.join(', ') : '<i>None</i>'}</div>`;
-    }).join('')}
-    <button class="close-btn" onclick="hidePersonInfo()">Close</button>
-  `;
-  box.classList.remove('hidden');
+function hideTooltip() {
+    const tooltip = document.getElementById('tooltip');
+    tooltip.classList.remove('visible');
 }
 
-function hidePersonInfo() {
-  document.getElementById('person-info').classList.add('hidden');
+function showPersonDetails(event, d) {
+    const person = d.person;
+    const detailsDiv = document.getElementById('person-info');
+    
+    let html = `<div class="person-field"><strong>Nombre:</strong> <span>${person.name}</span></div>`;
+    html += `<div class="person-field"><strong>Especie:</strong> <span>${person.especie.join(', ')}</span></div>`;
+    html += `<div class="person-field"><strong>Tecnología:</strong> <span>${person.tecnologia.join(', ')}</span></div>`;
+    html += `<div class="person-field"><strong>Líneas:</strong> <span>${person.lineas.join(', ')}</span></div>`;
+    html += `<div class="person-field"><strong>Rol:</strong> <span>${person.rol.join(', ')}</span></div>`;
+    html += `<div class="person-field"><strong>Institución:</strong> <span>${person.institucion.join(', ')}</span></div>`;
+    
+    detailsDiv.innerHTML = html;
 }
 
-// Expose for button
-window.hidePersonInfo = hidePersonInfo;
+// D3 drag functions
+function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+}
 
-// --- Init ---
-window.addEventListener('DOMContentLoaded', () => {
-  createFieldTabs();
-  setupFilterEvents();
-  updateNetwork();
+function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+}
+
+function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    const container = document.querySelector('.network-container');
+    width = container.clientWidth;
+    height = container.clientHeight;
+    
+    svg.attr('width', width).attr('height', height);
+    simulation.force('center', d3.forceCenter(width / 2, height / 2));
+    simulation.alpha(1).restart();
 });
