@@ -3,111 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red de Investigación</title>
+    <title>Red de Colaboración Científica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <div class="sidebar">
-            <h2>Filtros</h2>
-            
-            <div class="filter-section">
-                <div class="filter-header especie" onclick="toggleFilter('especie')">
-                    <span>Especie</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="filter-content" id="especie-content">
-                    <label><input type="checkbox" value="Ovina" onchange="updateFilters()"> Ovina</label>
-                    <label><input type="checkbox" value="Caprina" onchange="updateFilters()"> Caprina</label>
-                    <label><input type="checkbox" value="Vacuna" onchange="updateFilters()"> Vacuna</label>
-                    <label><input type="checkbox" value="Porcina" onchange="updateFilters()"> Porcina</label>
-                    <label><input type="checkbox" value="Avícola" onchange="updateFilters()"> Avícola</label>
-                    <label><input type="checkbox" value="Cunícula" onchange="updateFilters()"> Cunícula</label>
-                </div>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <div class="flex flex-col md:flex-row h-screen">
+        <!-- Sidebar for Filters -->
+        <aside class="w-full md:w-80 lg:w-96 bg-white p-6 overflow-y-auto shadow-lg flex-shrink-0">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Filtros de Búsqueda</h1>
+            <div id="filters-container" class="space-y-4">
+                <!-- Filter accordions will be injected here by JavaScript -->
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6 flex flex-col relative">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Visualización de la Red</h2>
+            <div id="visualization-container" class="relative flex-1 bg-white rounded-xl shadow-md border border-gray-200">
+                <svg id="network-graph"></svg>
             </div>
 
-            <div class="filter-section">
-                <div class="filter-header tecnologia" onclick="toggleFilter('tecnologia')">
-                    <span>Tecnología</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="filter-content" id="tecnologia-content">
-                    <label><input type="checkbox" value="Identificación y monitorización" onchange="updateFilters()"> Identificación y monitorización</label>
-                    <label><input type="checkbox" value="Detección y medición" onchange="updateFilters()"> Detección y medición</label>
-                    <label><input type="checkbox" value="Biosensores" onchange="updateFilters()"> Biosensores</label>
-                    <label><input type="checkbox" value="Posicionamiento y navegación" onchange="updateFilters()"> Posicionamiento y navegación</label>
-                    <label><input type="checkbox" value="Automatización y robots" onchange="updateFilters()"> Automatización y robots</label>
-                    <label><input type="checkbox" value="Análisis de imágenes" onchange="updateFilters()"> Análisis de imágenes</label>
-                    <label><input type="checkbox" value="Ciencia de datos" onchange="updateFilters()"> Ciencia de datos</label>
-                </div>
+            <!-- Person Details Panel -->
+            <div id="details-panel" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-gray-300 w-11/12 max-w-md">
+                <button id="close-details" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">&times;</button>
+                <h3 id="details-name" class="text-2xl font-bold mb-4 text-gray-900"></h3>
+                <div id="details-content" class="space-y-3"></div>
             </div>
-
-            <div class="filter-section">
-                <div class="filter-header lineas" onclick="toggleFilter('lineas')">
-                    <span>Líneas</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="filter-content" id="lineas-content">
-                    <label><input type="checkbox" value="Salud animal" onchange="updateFilters()"> Salud animal</label>
-                    <label><input type="checkbox" value="Optimización de recursos" onchange="updateFilters()"> Optimización de recursos</label>
-                    <label><input type="checkbox" value="Comportamiento animal" onchange="updateFilters()"> Comportamiento animal</label>
-                    <label><input type="checkbox" value="Monitoreo de emisiones" onchange="updateFilters()"> Monitoreo de emisiones</label>
-                    <label><input type="checkbox" value="Reproducción y mejora genética" onchange="updateFilters()"> Reproducción y mejora genética</label>
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <div class="filter-header rol" onclick="toggleFilter('rol')">
-                    <span>Rol</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="filter-content" id="rol-content">
-                    <label><input type="checkbox" value="IP" onchange="updateFilters()"> IP</label>
-                    <label><input type="checkbox" value="Postdoc" onchange="updateFilters()"> Postdoc</label>
-                    <label><input type="checkbox" value="Predoc" onchange="updateFilters()"> Predoc</label>
-                    <label><input type="checkbox" value="Técnico" onchange="updateFilters()"> Técnico</label>
-                    <label><input type="checkbox" value="Asesor científico" onchange="updateFilters()"> Asesor científico</label>
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <div class="filter-header institucion" onclick="toggleFilter('institucion')">
-                    <span>Institución</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="filter-content" id="institucion-content">
-                    <label><input type="checkbox" value="CICYTEX" onchange="updateFilters()"> CICYTEX</label>
-                    <label><input type="checkbox" value="CSIC/INIA" onchange="updateFilters()"> CSIC/INIA</label>
-                    <label><input type="checkbox" value="IRTA" onchange="updateFilters()"> IRTA</label>
-                    <label><input type="checkbox" value="IUCA" onchange="updateFilters()"> IUCA</label>
-                    <label><input type="checkbox" value="NEIKER" onchange="updateFilters()"> NEIKER</label>
-                    <label><input type="checkbox" value="UAB" onchange="updateFilters()"> UAB</label>
-                    <label><input type="checkbox" value="UCO" onchange="updateFilters()"> UCO</label>
-                    <label><input type="checkbox" value="UdL/Agrotecnio" onchange="updateFilters()"> UdL/Agrotecnio</label>
-                    <label><input type="checkbox" value="UM" onchange="updateFilters()"> UM</label>
-                    <label><input type="checkbox" value="USAL" onchange="updateFilters()"> USAL</label>
-                    <label><input type="checkbox" value="USC/Campus Terra" onchange="updateFilters()"> USC/Campus Terra</label>
-                    <label><input type="checkbox" value="UPV" onchange="updateFilters()"> UPV</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="network-container">
-                <svg id="network" width="800" height="600"></svg>
-                <div id="tooltip" class="tooltip"></div>
-            </div>
-            
-            <div class="person-details" id="person-details">
-                <h3>Detalles de la Persona</h3>
-                <div id="person-info">
-                    <p>Haz clic en una persona para ver sus detalles</p>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <!-- Tooltip for links -->
+    <div id="tooltip" class="absolute bg-gray-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none opacity-0 transition-opacity duration-300 shadow-lg"></div>
+
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Main Script -->
     <script src="script.js"></script>
+
 </body>
 </html>
